@@ -1,0 +1,12 @@
+{
+  "labels": [
+    "Responsive Web Design",
+    "JavaScript DS&A",
+    "Front End Libraries",
+    "Data Visualization",
+    "APIs & Microservices",
+    "Quality Assurance",
+    "Scientific Python"
+  ],
+  "values": [100, 85, 80, 75, 70, 65, 60]
+}

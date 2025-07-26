@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DevTrack Project</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>DevTrack Shopping & Learning Portal</h1>
+    <nav>
+      <ul>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#event">Event Hub</a></li>
+        <li><a href="#travel">Travel</a></li>
+        <li><a href="#semantic">Semantic HTML</a></li>
+        <li><a href="#chart">Progress Chart</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="shop" class="section">
+    <h2>Shopping Cart (Test Version)</h2>
+    <button id="js-book">Add JS Book</button>
+    <button id="py-guide">Add Python Guide</button>
+    <ul id="cart-list"></ul>
+    <p id="cart-total">Total: $0</p>
+  </section>
+
+  <section id="event">
+    <h2>Event Hub</h2>
+    <p>Join exciting tech events and coding bootcamps hosted around the globe!</p>
+    <ul>
+      <li>Hackathon India 2025</li>
+      <li>DevCon International</li>
+      <li>FreeCodeCamp Live Sessions</li>
+    </ul>
+  </section>
+
+  <section id="travel">
+    <h2>Top Travel Destinations</h2>
+    <p>Explore the world with our specially curated travel experiences.</p>
+    <ul>
+      <li>Group Travels</li>
+      <li>Private Tours</li>
+    </ul>
+    <figure>
+      <img src="https://cdn.freecodecamp.org/curriculum/labs/alps.jpg" alt="Alps" width="250"/>
+      <figcaption>Trip to the Alps</figcaption>
+    </figure>
+  </section>
+
+  <section id="semantic">
+    <h2>Semantic HTML Examples</h2>
+    <article>
+      <h3>Importance of Semantic Tags</h3>
+      <p><strong>HTML</strong> stands for <em>HyperText Markup Language</em>.</p>
+      <dl>
+        <dt>HTML</dt>
+        <dd>Markup structure</dd>
+        <dt>CSS</dt>
+        <dd>Styling language</dd>
+      </dl>
+    </article>
+  </section>
+
+  <section id="chart">
+    <h2>Learning Progress Chart</h2>
+    <canvas id="progressChart" width="400" height="200"></canvas>
+  </section>
+
+  <footer>
+    <p>Built with ❤️ using HTML, CSS, JS, Python & FreeCodeCamp</p>
+  </footer>
+
+  <script>
+    const cart = [];
+
+    function addToCart(item) {
+      cart.push(item);
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartList = document.getElementById("cart-list");
+      const cartTotal = document.getElementById("cart-total");
+      cartList.innerHTML = "";
+
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.textContent = `${index + 1}. ${item.name} - $${item.price}`;
+        cartList.appendChild(li);
+        total += item.price;
+      });
+
+      cartTotal.textContent = `Total: $${total}`;
+    }
+
+    document.getElementById("js-book").addEventListener("click", () => {
+      addToCart({ name: "JavaScript Book", price: 20 });
+    });
+
+    document.getElementById("py-guide").addEventListener("click", () => {
+      addToCart({ name: "Python Guide", price: 25 });
+    });
+
+    const ctx = document.getElementById("progressChart").getContext("2d");
+
+    new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: [
+          "Responsive Web Design",
+          "JavaScript DS&A",
+          "Front End Libraries",
+          "Data Visualization",
+          "APIs & Microservices",
+          "Quality Assurance",
+          "Scientific Python"
+        ],
+        datasets: [{
+          label: "Completion (%)",
+          data: [100, 85, 80, 75, 70, 65, 60],
+          backgroundColor: "rgba(74, 144, 226, 0.6)",
+          borderColor: "rgba(74, 144, 226, 1)",
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
