@@ -38,5 +38,5 @@ This project demonstrates essential web development concepts learned via FreeCod
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/devtrack-project.git
+   git clone [https://github.com/your-username/devtrack-project.git](https://github.com/AakashSingh07/Devtrack-Project)
    cd devtrack-project
